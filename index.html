@@ -1,8 +1,40 @@
 <html>
-  <head>
-    <title>thetazero</title>
-  </head>
-  <body>
-    
-  </body>
+
+<head>
+  <title>thetazero</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="nav.js"></script>
+  <script src="module.js"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <style>
+    .modules {
+      text-align: center;
+    }
+
+    theta-module {
+      display: inline-block;
+      margin: 30px 10px;
+      width: 200px;
+      height: 200px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      /*mobile*/
+      theta-module {
+        width: 80vw;
+        height: 80vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <theta-nav></theta-nav>
+  <div class="modules">
+    <theta-module title='this.init()' href='/words/this_init.html'></theta-module>
+    <theta-module title='Termall' href='https://github.com/thetazero/termall' desc="poorly implemented webscrapping cli"></theta-module>
+    <theta-module title='Extensor'  href='/words/extensor.html'></theta-module>
+  </div>
+</body>
+
 </html>
