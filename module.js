@@ -24,7 +24,7 @@ customElements.define('theta-module', class extends HTMLElement {
       }
       @media only screen and (max-width: 768px) {
         .title{
-          font-size:2em;
+          font-size:1.6em;
         }
       }
       :host{
