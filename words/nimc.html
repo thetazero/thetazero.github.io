@@ -16,16 +16,26 @@
       NIMC(<a href="https://github.com/thetazero/nimc">github</a>) = <b>N</b>otes + v<b>im</b> + <b>C</b>lient
     </p>
     <p>
+      NIMC is the renderer for your notes, instead of writing notes in some crappy WYSIWYG edditor you just write it in
+      your text editor of choice (vim) and then NIMC renders the notes.
+    </p>
+    <p>
       It's programmed using custom webcomponents and is easily extensible by creating your own custom webcomponents to
       render a different file type.
     </p>
     <p>
-      It curently has two different renderers one for markdown (.md) and one for latex (.tex). The markdown renderer
-      uses markdown-it and therefore is complient with the common mark spec. And the .tex renderer uses Katex with the
-      chemical equations extension.
+      Latex renderer: via <a href="https://katex.org/">Katex</a> and chem extension for Katex
+    </p>
+    <img src="/imgs/nimc/tex.png" width="30%">
+    <p>
+      Dot render: via <a href="https://visjs.org/">vis.js</a>
+    </p>
+    <img src="/imgs/nimc/dot.png" width="30%">
+    <p>
+      Markdown render: commonmark spec via <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>
     </p>
     <p>
-      I plan on writing my own markdown render in order to support Katex in markdown and allow for even more easy
+      I plan on writing my own markdown render in order to support Katex and Vis.js in markdown and allow for even more easy
       extensibility.
     </p>
   </div>

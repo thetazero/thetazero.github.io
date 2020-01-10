@@ -44,3 +44,7 @@ a,
 a:visited {
   color: var(--text_accent);
 }
+
+.container img {
+  min-width: 250px !important;
+}
