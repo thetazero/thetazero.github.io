@@ -4,9 +4,11 @@ body {
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --background_darker: #181818;
   --background: #222;
   --background_emphasize: #444;
   --background_nav: #333;
+  --text_darker: #c6c6c6;
   --text: #ccc;
   --text_emphasize: #fff;
   --text_darken: #999;
@@ -47,4 +49,38 @@ a:visited {
 
 .container img {
   min-width: 250px !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 3px;
+}
+::-webkit-scrollbar-button {
+  background-color: #444;
+}
+::-webkit-scrollbar-track {
+  background-color: #484848;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #282828;
+}
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #666;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-corner {
+  background-color: #484848;
+}
+::-webkit-resizer {
+  background-color: #444;
+}
+
+p.block {
+  border: 1px solid #333;
+  background: var(--background_darker);
+  color: var(--text_darker);
+  padding: 10px;
+  border-radius: 5px;
+  line-height: 130%;
 }
