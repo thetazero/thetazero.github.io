@@ -1,0 +1,72 @@
+.hljs,
+.hljs-subst {
+  color: hsl(0, 0%, 27%);
+}
+.hljs-comment {
+  color: hsl(0, 0%, 53%);
+}
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: hsl(0, 100%, 27%);
+}
+.hljs-title,
+.hljs-section {
+  color: hsl(0, 100%, 27%);
+  font-weight: bold;
+}
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: hsl(0, 41%, 56%);
+}
+.hljs-literal {
+  color: hsl(100, 30%, 52%);
+}
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: hsl(90, 100%, 23%);
+}
+.hljs-meta {
+  color: hsl(200, 66%, 36%);
+}
+.hljs-meta-string {
+  color: hsl(200, 47%, 53%);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs {
+  border: 1px solid #333;
+  background: var(--background_darker);
+  color: var(--text_darker);
+  padding: 10px;
+  border-radius: 5px;
+  line-height: 130%;
+  overflow-x: auto;
+  display: block;
+  padding: 0.5em;
+}
