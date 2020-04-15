@@ -8,9 +8,9 @@ body {
   --background: #222;
   --background_emphasize: #444;
   --background_nav: #333;
-  --text_darker: #c6c6c6;
-  --text: #ccc;
-  --text_emphasize: #fff;
+  --text_darker: #bbb;
+  --text: #c0c0c0;
+  --text_emphasize: #eee;
   --text_darken: #999;
   --text_accent: hsl(200, 100%, 70%);
   --text_transition_speed: 100ms;
@@ -79,8 +79,13 @@ a:visited {
 p.block {
   border: 1px solid #333;
   background: var(--background_darker);
-  color: var(--text_darker);
+  /* color: var(--text_darker); */
+  color: #aaa;
   padding: 10px;
   border-radius: 5px;
-  line-height: 130%;
+  line-height: 160%;
+}
+
+p {
+  line-height: 150%;
 }
