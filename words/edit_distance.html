@@ -1,10 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
 
 <head>
     <title>thetazero - Edit Distance</title>
     <link rel="stylesheet" href="/style.css">
     <script src="/nav.js"></script>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="Description" content="An implementation of the dynamic programing edit distance algorithm ">
 </head>
 
 <body>
@@ -241,13 +243,14 @@
         </code></pre>
     </div>
     <link rel="stylesheet" href="/hljs.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script onload="highlight()" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
+        function highlight() {
             document.querySelectorAll('pre code').forEach((block) => {
                 hljs.highlightBlock(block);
             });
-        });
+        }
     </script>
 </body>
 
