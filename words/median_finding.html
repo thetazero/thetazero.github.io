@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>thetazero - Median Finding</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/nav.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description"
+        content="Four implemented median finding algorithms. And their theoretical and real world performance.">
+</head>
+
+<body>
+    <theta-nav></theta-nav>
+    <div class="container">
+        <h1>Θ(n) Median Finding</h1>
+        <hr>
+        <p>
+            Four algorithms for median finding were written in golang, then tested on a 2015 mac book pro. 
+            The four algorithms are briefly described below and the complete implementation can be found on <a href="https://github.com/thetazero/algorithms/tree/master/median_finding">github</a>.
+        </p>
+        <ol>
+            <li>sort.Ints then take median element (default sort)</li>
+            <li>quicksort then take the median element average O(nlogn) worst case O(n^2)</li>
+            <li>quickselect average O(n) worst case O(n^2)</li>
+            <li>determanistic quick select O(n)</li>
+        </ol>
+        <p>
+            The inputs where created by using the function below starting with size 2 and doubling until 2^23.
+        </p>
+        <pre><code class="language-go">
+            func generate(size int) []int {
+                var a []int
+                for i := 0; i < size; i++ {
+                    a = append(a, rand.Int()/2)
+                }
+                return a
+            }
+        </code></pre>
+        <p>
+            The real world run times:
+        </p>
+        <img src="/imgs/median_finding/chart.webp" alt="Chart showing real run times of the algorithms">
+        <p>
+            While quickselect is technically an O(n^2) algorithm it has real world performance that beats deterministic quickselect 
+            with O(n) theoretical run time even for large inputs.
+        </p>
+    </div>
+
+    <link rel="stylesheet" href="/hljs2.css">
+    <script onload="highlight()" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script>
+        function highlight() {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        }
+    </script>
+</body>
+
+</html>
