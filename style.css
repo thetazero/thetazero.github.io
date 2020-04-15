@@ -79,8 +79,7 @@ a:visited {
 p.block {
   border: 1px solid #333;
   background: var(--background_darker);
-  /* color: var(--text_darker); */
-  color: #aaa;
+  color: var(--text_darker);
   padding: 10px;
   border-radius: 5px;
   line-height: 160%;
