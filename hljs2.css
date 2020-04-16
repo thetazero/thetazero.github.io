@@ -76,4 +76,5 @@ pre code {
   border: 1px solid #444;
   padding: 10px;
   font-size: 83%;
+  overflow-x: auto;
 }

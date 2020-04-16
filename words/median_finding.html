@@ -30,13 +30,13 @@
             The inputs where created by using the function below starting with size 2 and doubling until 2^23.
         </p>
         <pre><code class="language-go">
-            func generate(size int) []int {
-                var a []int
-                for i := 0; i < size; i++ {
-                    a = append(a, rand.Int()/2)
-                }
-                return a
-            }
+func generate(size int) []int {
+    var a []int
+    for i := 0; i < size; i++ {
+        a = append(a, rand.Int()/2)
+    }
+    return a
+}
         </code></pre>
         <p>
             The real world run times:
