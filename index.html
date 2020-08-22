@@ -7,7 +7,8 @@
   <script src="nav.js"></script>
   <script src="module.js"></script>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="Description" content="The homepage of thetazero. Page will include random projects and algorithm implemenations, visualizations and analysis.">
+  <meta name="Description"
+    content="The homepage of thetazero. Page will include random projects and algorithm implemenations, visualizations and analysis.">
   <style>
     .modules {
       text-align: center;
@@ -24,8 +25,17 @@
 
       /*mobile*/
       theta-module {
-        width: calc(40vw - 30px);
-        height: calc(40vw - 30px);
+        width: calc(50vw - 35px);
+        height: calc(50vw - 35px);
+        margin:10px;
+      }
+
+      body {
+        margin: 0px;
+      }
+
+      .modules {
+        margin-top: 65px;
       }
     }
   </style>
@@ -34,7 +44,9 @@
 <body>
   <theta-nav></theta-nav>
   <div class="modules">
-    <theta-module title="Θ(n) Median Finding" href="/words/median_finding.html" desc="And why you shouldn't"></theta-module>
+    <theta-module title="N-Queens" href="/words/n_queens.html" desc="Web Assembly, Visualizations and Wallpapers"></theta-module>
+    <theta-module title="Θ(n) Median Finding" href="/words/median_finding.html" desc="And why you shouldn't">
+    </theta-module>
     <theta-module title="Edit Distance" href="/words/edit_distance.html" desc="Edit distance solution visualization">
     </theta-module>
     <theta-module title='NIMC' href='/words/nimc.html' desc='Notes + vIM + Client'></theta-module>

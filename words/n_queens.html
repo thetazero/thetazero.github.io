@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>thetazero - N-Queens</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/nav.js"></script>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="Description"
+        content="N-Queens solution visualization written using Web Assembly in order to make wallpapers.">
+    <style>
+        canvas {
+            margin: 20px 0px;
+            background: var(--background_darker);
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <theta-nav></theta-nav>
+    <div class="container">
+        <h1>N-Queens</h1>
+        <hr>
+        <p>
+            The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack
+            each other (<a href="https://leetcode.com/problems/n-queens/">leetcode</a>).
+        </p>
+        <p>
+            Backtracking can be used in order to generate all solutions as seen below.
+        </p>
+        <pre><code>
+func solveNQueens(n int) [][]string {
+    ans := [][]string{}
+
+    cols := make([]bool, n)
+    dag1 := make([]bool, 2*n-1)
+    dag2 := make([]bool, 2*n-1)
+    board := make([]string, n)
+    // init the board
+    for i := 0; i < n; i++ {
+        board[i] = strings.Repeat(".", n)
+    }
+
+    magic(n, 0, cols, dag1, dag2, board, &ans)
+    return ans
+}
+
+func magic(n int, row int, cols, dag1, dag2 []bool, board []string, ans *[][]string) {
+    if row == n {
+        c := make([]string, n)
+        copy(c, board)
+        *ans = append(*ans, c)
+        return
+    }
+    for c := 0; c < n; c++ {
+        if !(cols[c] || dag1[c+row] || dag2[row-c+n-1]) {
+            cols[c] = true
+            dag1[c+row] = true
+            dag2[row-c+n-1] = true
+            board[row] = board[row][:c] + "Q" + board[row][c+1:]
+
+            magic(n, row+1, cols, dag1, dag2, board, ans)
+
+            cols[c] = false
+            dag1[c+row] = false
+            dag2[row-c+n-1] = false
+            board[row] = board[row][:c] + "." + board[row][c+1:]
+        }
+    }
+}
+
+        </code></pre>
+        <p>
+            However it gets more interesting when you try to generate one solution for large n.
+            The backtrackings solution becomes far to slow for n≥30.
+            There however is an interesting probablistic algorithm that uses the "min-conflicts" heuristic.<br>
+            According to wikipedia:
+        </p>
+        <p class="quote">
+            The 'minimum-conflicts' heuristic – moving the piece with the largest number of conflicts to the square in
+            the same column where the number of conflicts is smallest – is particularly effective: it finds a solution
+            to the 1,000,000 queen problem in less than 50 steps on average. This assumes that the initial configuration
+            is 'reasonably good'
+        </p>
+        <p>
+            I was not able to get such impressive performance however, the compiled go code was able to solve the problem with 1000
+            queens on average in 1.8s with about 180 attempts before a successful one. 
+        </p>
+        <br>
+        <p>
+            Below is a diferent visualization for the solution of n-queens, without the chessboard because chessboards become boring to look at.
+        </p>
+        <input type="text" value="13" id="num" autocomplete="off"> <button onclick="solve()">Solve</button><br>
+        <canvas></canvas>
+    </div>
+    <link rel="stylesheet" href="/hljs2.css">
+    <script onload="highlight()" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script>
+        function highlight() {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        }
+    </script>
+
+    <script src="/wasm_go.js"></script>
+    <script>
+        const go = new Go();
+        let mod, inst;
+        WebAssembly.instantiateStreaming(fetch("/wasm/nqueen/nqueen.wasm"), go.importObject).then(async result => {
+            mod = result.module;
+            inst = result.instance;
+            await go.run(inst);
+        });
+
+        const canvas = document.querySelector('canvas')
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas(size) {
+            canvas.width = size
+            canvas.height = size
+            ctx.fillStyle = "#181818"
+            ctx.fillRect(0, 0, size, size)
+        }
+
+        function solve() {
+            let n = parseInt(document.querySelector("#num").value)
+            let tileWidth = Math.floor(canvas.offsetWidth / n)
+            console.log(tileWidth, n)
+            resizeCanvas(tileWidth * n)
+            let ans = NQueen(n)
+            for (let i = 0; i < ans.length; i++) {
+                bigCross(i, ans[i], tileWidth, n)
+            }
+            for (let i = 0; i < ans.length; i++) {
+                smallCross(i, ans[i], tileWidth, n)
+            }
+            for (let i = 0; i < ans.length; i++) {
+                circle(i, ans[i], tileWidth, n)
+                smallCircle(i, ans[i], tileWidth, n)
+            }
+        }
+
+        function bigCross(x, y, w, n) {
+            ctx.fillStyle = "#555"
+            let size = 1 / 4
+            rect(x, y, w, n, size, Math.PI / 4)
+            rect(x, y, w, n, size, -Math.PI / 4)
+            rect(x, y, w, n, size, 0)
+            rect(x, y, w, n, size, Math.PI / 2)
+        }
+
+        function smallCross(x, y, w, n) {
+            ctx.fillStyle = "#20a5b6"
+            let size = 1 / 10
+            rect(x, y, w, n, size, Math.PI / 4)
+            rect(x, y, w, n, size, -Math.PI / 4)
+            rect(x, y, w, n, size, 0)
+            rect(x, y, w, n, size, Math.PI / 2)
+        }
+
+        function circle(x, y, w, n) {
+            ctx.beginPath()
+            ctx.arc((x + .5) * w, (y + .5) * w, w / 3, 0, 2 * Math.PI)
+            ctx.fillStyle = "#555"
+            ctx.fill()
+        }
+
+        function smallCircle(x, y, w, n) {
+            ctx.beginPath()
+            ctx.arc((x + .5) * w, (y + .5) * w, w / 4, 0, 2 * Math.PI)
+            ctx.fillStyle = "#181818"
+            ctx.fill()
+        }
+
+        function rect(x, y, w, n, width_ratio, rotation) {
+            let lw = w * n * (2 ** 1.5)
+            let lh = w * width_ratio
+            let lx = (x + .5) * w - lw / 2
+            let ly = (y + .5) * w - lh / 2
+            let [cx, cy] = center(lx, ly, lw, lh)
+
+            ctx.save()
+            ctx.translate(cx, cy)
+            ctx.rotate(rotation)
+            ctx.translate(-cx, -cy)
+            ctx.fillRect(lx, ly, lw, lh);
+            ctx.restore()
+        }
+
+        function center(x, y, w, h) {
+            return [x + w / 2, y + h / 2]
+        }
+
+        resizeCanvas(canvas.offsetWidth)
+    </script>
+</body>
+
+</html>

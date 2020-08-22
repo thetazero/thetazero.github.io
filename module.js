@@ -1,4 +1,5 @@
 customElements.define('theta-module', class extends HTMLElement {
+
   constructor() {
     super()
     const shadow = this.attachShadow({ mode: 'open' })
@@ -47,15 +48,19 @@ customElements.define('theta-module', class extends HTMLElement {
       </a>
     </style>`
   }
+
   connectedCallback() {
     this.shadowRoot.querySelector('span.title').innerText = this.title
     this.shadowRoot.querySelector('span.desc').innerText = this.desc
     this.shadowRoot.querySelector('a.link').setAttribute('href', this.getAttribute('href'))
   }
+
   get title() {
     return this.getAttribute('title')
   }
+
   get desc() {
     return this.getAttribute('desc')
   }
+
 })
