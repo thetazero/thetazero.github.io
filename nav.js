@@ -3,7 +3,7 @@ customElements.define('theta-nav', class extends HTMLElement {
     super()
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.innerHTML = `
-    <a class='logo' href='/'>
+    <a class='logo' href='https://thetazero.github.io'>
       <span>0</span>
       <span>Θ</span>
     </div>
