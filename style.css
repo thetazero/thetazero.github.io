@@ -122,3 +122,37 @@ input[type="button"]:active,
 button:active{
   background: var(--background_emphasize);
 }
+
+nav {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  background: var(--background_nav);
+  --size: 50px;
+  height: var(--size);
+  z-index: 100;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  display: block;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+  color:var(--text) !important;
+}
+
+nav ul li a:hover {
+  color: var(--accent) !important;
+}
