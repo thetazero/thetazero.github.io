@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>thetazero - Purpose</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/nav.js"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="Description" content="What is your purpose? I make buttons">
+  <style>
+    button {
+      margin: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <theta-nav></theta-nav>
+  <div class="container">
+    <h1>What is your purpose?</h1>
+    <hr>
+    <button onclick="make()">I make buttons</button><br>
+  </div>
+  <script>
+    let cont = document.querySelector(".container")
+    function make() {
+      cont.innerHTML += `<button onclick="make()">I make buttons</button><br>`
+    }
+  </script>
+</body>
+
+</html>
