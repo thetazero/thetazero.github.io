@@ -11,6 +11,10 @@
     button {
       margin: 3px;
     }
+
+    div.btn {
+      margin-left: 10px;
+    }
   </style>
 </head>
 
@@ -19,12 +23,16 @@
   <div class="container">
     <h1>What is your purpose? </h1>
     <hr>
-    <button onclick="make()">I make buttons</button><br>
+    <div class="btn"><button onclick="make(this)">I make buttons</button></div>
   </div>
   <script>
     let cont = document.querySelector(".container")
-    function make() {
-      cont.innerHTML += `<button onclick="make()">I make buttons</button><br>`
+    function make(e) {
+      console.log(e)
+      let x = document.createElement("div")
+      x.classList = "btn"
+      x.innerHTML = `<button onclick="make(this)">I make buttons</button>`
+      e.parentElement.insertBefore(x, e.nextSibling)
     }
   </script>
 </body>
