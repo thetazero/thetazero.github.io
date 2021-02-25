@@ -56,7 +56,10 @@
     topE.addEventListener('keyup', frac)
     bot.addEventListener('keyup', frac)
     function frac() {
-      inner.style.width = `${parseFloat(topE.value.replace(/,/g, "")) / parseFloat(bot.value.replace(/,/g, "")) * 100}%  `
+      let val = parseFloat(topE.value.replace(/,/g, "")) / parseFloat(bot.value.replace(/,/g, "")) * 100
+      if (val == null) val = 0
+      if (val > 100) val = 100
+      inner.style.width = `${val}%`
     }
   </script>
 </body>
