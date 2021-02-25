@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>thetazero - Fraction Square</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/nav.js"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="Description" content="What is your purpose? I make buttons">
+  <style>
+    .rect {
+      width: 80%;
+      max-width: 400px;
+      height: 200px;
+      background: hsl(300, 10%, 20%)
+    }
+
+    .inner-rect {
+      height: 100%;
+      background: hsl(60, 20%, 30%);
+      transition: width 100ms;
+    }
+
+    input {
+      width: 50px;
+      background: var(--background) !important;
+      text-align: center;
+    }
+
+    .frac-line {
+      width: 60px;
+      margin: 3px;
+      margin-left: 10px;
+      background: #999;
+      height: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <theta-nav></theta-nav>
+  <div class="container">
+    <h1>Fraction Square</h1>
+    <hr>
+    <input type="text" id="top" value=0>
+    <div class="frac-line"></div>
+    <input type="text" id="bot" value=100>
+    <br>
+    <br>
+    <div class="rect">
+      <div class="inner-rect" style="width:0%"></div>
+    </div>
+  </div>
+  <script>
+    let [topE, bot, inner] = [document.querySelector("#top"), document.querySelector("#bot"), document.querySelector(".inner-rect")]
+    topE.addEventListener('keyup', frac)
+    bot.addEventListener('keyup', frac)
+    function frac() {
+      inner.style.width = `${parseFloat(topE.value.replace(/,/g, "")) / parseFloat(bot.value.replace(/,/g, "")) * 100}%  `
+    }
+  </script>
+</body>
+
+</html>
