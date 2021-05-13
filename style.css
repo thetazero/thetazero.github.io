@@ -157,3 +157,8 @@ nav ul li a {
 nav ul li a:hover {
   color: var(--accent) !important;
 }
+
+.ref{
+  color:var(--text) !important;
+  font-size: 0.8em;
+}
